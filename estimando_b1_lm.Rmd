@@ -1,0 +1,58 @@
+```{r data generation, echo = FALSE, results = "hide"}
+# Simple linear regression: calculate slope of the regression line from moment table.
+#set.seed(12345)
+
+decimals = 2
+
+n  <- sample(40:80, 1)
+
+#   population data
+mx <- runif(1, 40, 60); my <- runif(1, 200, 280)
+sx <- runif(1,  9, 12); sy <- runif(1,  44, 50)
+r  <- runif(1, 0.4, 0.9)
+x  <- rnorm(n, mx, sx)
+y  <- rnorm(n, my + r * sy/sx * (x - mx), sy*sqrt(1 - r^2))
+
+#   sample data
+mx <- round(mean(x)); my <- round(mean(y))
+vx <- round(var(x));  vy <- round(var(y))
+r  <- round(cor(x, y), 2)
+
+sol  <- r * sqrt(vy/vx)
+
+sol <- round2(sol, decimals)
+```
+
+Question
+========
+Para `r n` empresas se dispone de información sobre el número de empleados, $x$, y la cantidad que estas gastan en formación de su personal (en € por empleado), $y$. La tabla resumen de dicha información viene dada por:
+
+|          | Variable $x$ | Variable $y$ |
+|:--------:|:------------:|:------------:|
+| Media    | `r mx`       | `r my`       |
+| Varianza | `r vx`       | `r vy`       |
+
+La correlación entre $x$ e $y$ es igual a `r fmt(r, 2)`.
+
+Estima por **mínimos cuadrados ordinarios** la **pendiente** de la recta de regresión de _y_ sobre _x_.
+
+**Nota:** Redondea tu respuesta a `r decimals` decimales utilizando la regla de redondeo estándar.
+
+
+Solution
+========
+Dado el modelo $y = {\beta_1} + {\beta_2}x + u$, el estimador de **mínimos cuadrados ordinarios** de la pendiente es $\hat \beta_2 = r \cdot \frac{s_y}{s_x}$.
+
+A partir de la información en la tabla y la fórmula anterior obtenemos 
+
+\begin{eqnarray*}
+&& \hat \beta_2 = r \cdot \frac{s_y}{s_x} = `r fmt(r, 2)` \cdot \sqrt{\frac{`r vy`}{`r vx`}} = `r fmt(sol, decimals)`
+\end{eqnarray*}
+
+
+Meta-information
+================
+exname: Mínimos Cuadrados Ordinarios 
+extype: num
+exsolution: `r fmt(sol, decimals)`
+extol: 0.01

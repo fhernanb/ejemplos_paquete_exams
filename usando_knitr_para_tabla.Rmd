@@ -1,0 +1,50 @@
+```{r data generation, echo = FALSE, results = "hide"}
+## DATA GENERATION
+depor <- 1:10
+p1 <- sample(0:1, size=10, replace=TRUE)
+p2 <- sample(0:1, size=10, replace=TRUE)
+p3 <- sample(0:1, size=10, replace=TRUE)
+tot <- p1 + p2 + p3
+datos <- data.frame(depor, p1, p2, p3, total=tot)
+tabla <- as.matrix(datos)
+
+## solution
+res <- sum(datos$total)
+
+## schoice
+questions <- c(res, res+1, res+3, res-4)
+solutions <- c(TRUE, FALSE, FALSE, FALSE)
+
+o <- sample(1:4)
+questions <- questions[o]
+solutions <- solutions[o]
+```
+
+Question
+========
+A continuación se muestra una base de datos.
+
+```{r echo=FALSE, comment=''}
+library("knitr")
+kable(datos, format = "markdown")
+```
+
+¿Cuál es el valor de sumar todos los números de la variable `total`?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(questions, markup = "markdown")
+```
+
+Solution
+========
+La respuesta correcta es `r res` así que los valores de verdad de las opciones son:
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(solutions, single = TRUE)`
+exname: usando_dataframe
