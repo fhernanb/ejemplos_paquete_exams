@@ -1,12 +1,8 @@
 ```{r data generation, echo = FALSE, results = "hide"}
 ## DATA GENERATION
-vp <- sample(x=c(.....), size=1)
-i  <- sample(x=c(.....), size=1)
-n  <- sample(x=c(.....), size=1)
-
-vp <- 2
-i <- 0.1
-n <- 5
+vp <- sample(x=c(2.5, 3.1, 4.5), size=1)
+i  <- sample(x=c(0.10, 0.12, 0.15), size=1)
+n  <- sample(x=c(3, 5, 7), size=1)
 
 ## QUESTION/ANSWER GENERATION
 vf <- vp * (1+i)^n

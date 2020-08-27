@@ -3,7 +3,7 @@
 library("exams")
 
 # Paso 2 - para definir el directorio de trabajo --------------------------
-setwd("G:/Mi unidad/14_ExamsR/ejemplos_didacticos")
+setwd("####################################") # coloque su direccion
 
 # Paso 3 - para explorar las preguntas ------------------------------------
 
