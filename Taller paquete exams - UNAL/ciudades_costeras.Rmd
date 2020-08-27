@@ -1,0 +1,36 @@
+Question
+========
+¿Cuál ciudad de Colombia está en la costa?
+
+Answerlist
+----------
+* Cartagena
+* Bogotá
+* Medellín
+* Cali
+* Valledupar
+* Tunja
+* Barranquilla
+
+
+Solution
+========
+A continuación los grados de verdad para cada opción.
+
+Answerlist
+----------
+* True
+* False
+* False
+* False
+* False
+* False
+* True
+
+
+Meta-information
+================
+exname: Ciudades costeras
+extype: schoice
+exsolution: 1000001
+exshuffle: 4

@@ -1,0 +1,39 @@
+```{r, echo=FALSE, results="hide"}
+## parametros
+a <- sample(x=2:9, size=1)
+b <- sample(x=seq(2, 4, 0.1), size=1)
+c <- sample(x=seq(0.5, 0.8, 0.01), size=1)
+
+## solucion
+res <- exp(b * c) * (a * c^(a-1) + b * c^a)
+```
+
+
+Question
+========
+
+¿Cuál es la derivada de la función
+$$f(x) = x^{`r a`} e^{`r b` x}$$
+al ser evaluada en el punto $x = `r c`$?
+
+Solution
+=========
+El procedimiento para solucionar el ejercicio es el siguiente:
+
+$$
+\begin{aligned}
+  \frac{d f(x)}{d x} &= `r a` \times x^{`r a` - 1} e^{`r b` x} + x^{`r a`} \times `r b` e^{`r b` x} \\
+                     &= `r a` \times `r c`^{`r a` - 1} e^{`r b` \times `r c`} + `r c`^{`r a`} \times `r b` e^{`r b` \times `r c`} \\
+                     &= `r res`.
+\end{aligned}
+$$
+
+La respuesta correcta es `r fmt(res, 3)`.
+
+
+Meta-information
+================
+extype: num
+exsolution: `r fmt(res)`
+exname: Derivadas exponencial
+extol: 0.01
