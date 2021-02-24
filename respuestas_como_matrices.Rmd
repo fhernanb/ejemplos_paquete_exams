@@ -1,0 +1,46 @@
+```{r data generation, echo = FALSE, results = "hide"}
+## DATA GENERATION
+respuesta <- c(1, 2, 3, 4)
+
+## solution
+res <- respuesta
+
+## Funcion auxiliar para crear la matriz
+magia <- function(x) {
+  paste0("\\begin{bmatrix} ", x[1], " & ", x[2], " \\\\ ",
+         x[3], " & ", x[4], " \\end{bmatrix}")
+}
+
+## schoice
+questions <- c(magia(res), 
+               magia(res+1), 
+               magia(res*2), 
+               magia(res-4))
+solutions <- c(TRUE, FALSE, FALSE, FALSE)
+
+o <- sample(1:4)
+questions <- questions[o]
+solutions <- solutions[o]
+```
+
+Question
+========
+¿Cuál es la matriz con los primeros 4 números enteros positivos?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(questions, markup = "markdown")
+```
+
+Solution
+========
+La respuesta correcta es `r magia(res)` así que los valores de verdad de las opciones son:
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(solutions, single = TRUE)`
+exname: usando_dataframe
